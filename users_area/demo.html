@@ -1,0 +1,255 @@
+<?php   
+// Assuming all necessary variables are defined and sanitized above
+// if (isset($update_id) && !empty($update_id)) {
+//     $update_query = "UPDATE `user_table` SET 
+//                         `user_name` = '$user_name', 
+//                         `user_email` = '$user_email', 
+//                         `user_image` = '$user_image', 
+//                         `user_address` = '$user_address', 
+//                         `user_mobile` = '$user_mobile' 
+//                     WHERE user_id = $update_id";
+    
+//     // Execute the update query
+//     $update_result = mysqli_query($con, $update_query);
+
+//     // Check if the query was successful
+//     if ($update_result) {
+//         echo "<script>alert('Account updated successfully');</script>";
+//         echo "<script>window.open('logout.php', '_self');</script>";
+//     } else {
+//         // Error handling if the query fails
+//         echo "<script>alert('Error updating account. Please try again.');</script>";
+//     }
+// } else {
+//     // Handling if $update_id is not set or is empty
+//     echo "<script>alert('Invalid user ID. Please try again.');</script>";
+// }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.profile p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+    background-color: #007bff;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.card, .profile-details, .notification {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.card h3, .profile-details p, .notification p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+    </style>
+    <!-- body part -->
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="profile.jpg" alt="User Profile Picture" class="profile-pic">
+                <h2>John Doe</h2>
+                <p>johndoe@example.com</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('overview')">Overview</a></li>
+                    <li><a href="#" onclick="showSection('profile')">Profile</a></li>
+                    <li><a href="#" onclick="showSection('notifications')">Notifications</a></li>
+                    <li><a href="#" onclick="showSection('settings')">Settings</a></li>
+                    <li><a href="#" onclick="showSection('logout')">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <header>
+                <h1>Dashboard</h1>
+            </header>
+
+            <section id="overview" class="section active">
+                <div class="card">
+                    <h3>Total Orders</h3>
+                    <p>12</p>
+                </div>
+                <div class="card">
+                    <h3>Pending Orders</h3>
+                    <p>3</p>
+                </div>
+                <div class="card">
+                    <h3>Messages</h3>
+                    <p>5</p>
+                </div>
+            </section>
+
+            <section id="profile" class="section">
+                <h2>Your Profile</h2>
+                <div class="profile-details">
+                    <p><strong>Name:</strong> John Doe</p>
+                    <p><strong>Email:</strong> johndoe@example.com</p>
+                    <p><strong>Phone:</strong> +1234567890</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
+                </div>
+            </section>
+
+            <section id="notifications" class="section">
+                <h2>Notifications</h2>
+                <div class="notification">
+                    <p>You have 5 new messages.</p>
+                </div>
+                <div class="notification">
+                    <p>Your order #1234 has been shipped.</p>
+                </div>
+                <div class="notification">
+                    <p>Password change successful.</p>
+                </div>
+            </section>
+
+            <section id="settings" class="section">
+                <h2>Settings</h2>
+                <p>Update your account settings here.</p>
+            </section>
+
+            <section id="logout" class="section">
+                <h2>Logout</h2>
+                <p>You have been logged out.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.sidebar nav ul li a');
+    
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    const activeSection = document.getElementById(sectionId);
+    activeSection.classList.add('active');
+
+    const activeLink = document.querySelector(`a[href='#']`);
+    activeLink.classList.add('active');
+}
+
+// Show the overview section by default
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('overview');
+});
+
+    </script>
+</body>
+</html>

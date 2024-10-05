@@ -1,0 +1,71 @@
+*body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+.container-fluid{
+    background:linear-gradient(120deg,#00d4ff,#7af798,#4d42ff,#fb70dd);
+
+  }
+.Logo{
+    width:60px;
+    height: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+.Logo:hover{
+    width: 65px;
+    height: auto;
+    cursor: pointer;
+
+}
+.card-img-top{
+   width: 100%;
+   height: 150px;
+   object-fit: contain; 
+}
+.admin_image{
+    width: 100px;
+    object-fit: contain;
+}
+
+/* .container-fluid{
+    background-color: rgb(202, 241, 255);
+} */
+.name{
+    background-color: rgb(202, 241, 255);
+}
+/* .butten{
+    width: 100%;
+    height: auto;
+    background-color:#ff7200;
+} */
+/* .nav-link{
+    color: #ff7200;
+} */
+
+.hover_button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 15px 32px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Inline-block element */
+    font-size: 16px; /* Increase font size */
+    border: none; /* Remove borders */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.hover_button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.footer{
+    background-color: rgb(202, 241, 255);
+    position: absolute;
+    bottom: 0%;
+
+}
